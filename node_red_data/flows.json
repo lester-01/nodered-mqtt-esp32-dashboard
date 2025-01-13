@@ -1,0 +1,552 @@
+[
+    {
+        "id": "31ccc646d3cc98d9",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "1bda9c76401383b1",
+        "type": "mqtt-broker",
+        "name": "personal mosquitto broker",
+        "broker": "34.46.108.32",
+        "port": 1883,
+        "clientid": "node-red",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "d7e21e4701b97bd5",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "c6f1a7e81f3da5c3",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "9a9b5a65e69800a8",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "d7e21e4701b97bd5",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "06fb40d1bf1eec0b",
+        "type": "mqtt in",
+        "z": "31ccc646d3cc98d9",
+        "name": "incoming sensors data",
+        "topic": "sensors/#",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "1bda9c76401383b1",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 380,
+        "y": 220,
+        "wires": [
+            [
+                "1392842571bcecc3",
+                "2b08a77dfa298b90"
+            ]
+        ]
+    },
+    {
+        "id": "1392842571bcecc3",
+        "type": "debug",
+        "z": "31ccc646d3cc98d9",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "2b08a77dfa298b90",
+        "type": "switch",
+        "z": "31ccc646d3cc98d9",
+        "name": "switch for input keys",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "hask",
+                "v": "temperature",
+                "vt": "str"
+            },
+            {
+                "t": "hask",
+                "v": "humidity",
+                "vt": "str"
+            },
+            {
+                "t": "hask",
+                "v": "lightIntensity",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 600,
+        "y": 340,
+        "wires": [
+            [
+                "27342815fc6659f2",
+                "e9d3b21519c4cef0"
+            ],
+            [
+                "1e3098cf21e0c6ea",
+                "9b478caecad4e907"
+            ],
+            [
+                "f95509fbb4a90bdf",
+                "2905f396197f6946"
+            ]
+        ]
+    },
+    {
+        "id": "27342815fc6659f2",
+        "type": "debug",
+        "z": "31ccc646d3cc98d9",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "1e3098cf21e0c6ea",
+        "type": "debug",
+        "z": "31ccc646d3cc98d9",
+        "name": "debug 3",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "f95509fbb4a90bdf",
+        "type": "debug",
+        "z": "31ccc646d3cc98d9",
+        "name": "debug 4",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "9982206ecf32850d",
+        "type": "inject",
+        "z": "31ccc646d3cc98d9",
+        "name": "sensors simulator injector",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "2",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "sensors",
+        "payload": "{   \"temperature\": \"34\",   \"humidity\": \"67\",   \"lightIntensity\": \"680\" }",
+        "payloadType": "json",
+        "x": 180,
+        "y": 660,
+        "wires": [
+            [
+                "a85602d89ae48147"
+            ]
+        ]
+    },
+    {
+        "id": "e9d3b21519c4cef0",
+        "type": "function",
+        "z": "31ccc646d3cc98d9",
+        "name": "extract_temperature",
+        "func": "//set the temperature value as the payload\nmsg.payload=msg.payload.temperature;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1000,
+        "y": 120,
+        "wires": [
+            [
+                "e2675b8a20297b91",
+                "b73e9511954ce8bd"
+            ]
+        ]
+    },
+    {
+        "id": "9b478caecad4e907",
+        "type": "function",
+        "z": "31ccc646d3cc98d9",
+        "name": "extract_humidity",
+        "func": "//set the humidity value as the payload\nmsg.payload=msg.payload.humidity;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 380,
+        "wires": [
+            [
+                "b4d125df9beb90bb",
+                "e097574761945311"
+            ]
+        ]
+    },
+    {
+        "id": "2905f396197f6946",
+        "type": "function",
+        "z": "31ccc646d3cc98d9",
+        "name": "extract_lightIntensity",
+        "func": "//set the light intensity value as the payload\nmsg.payload=msg.payload.lightIntensity;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1000,
+        "y": 660,
+        "wires": [
+            [
+                "de65344c0975ddd3",
+                "eb0288a756bd0545"
+            ]
+        ]
+    },
+    {
+        "id": "e2675b8a20297b91",
+        "type": "debug",
+        "z": "31ccc646d3cc98d9",
+        "name": "temperature debug",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1210,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "b4d125df9beb90bb",
+        "type": "debug",
+        "z": "31ccc646d3cc98d9",
+        "name": "humidity debug",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1220,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "de65344c0975ddd3",
+        "type": "debug",
+        "z": "31ccc646d3cc98d9",
+        "name": "lightIntensity debug",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1250,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "b73e9511954ce8bd",
+        "type": "ui_gauge",
+        "z": "31ccc646d3cc98d9",
+        "name": "",
+        "group": "9a9b5a65e69800a8",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "temperature gauge",
+        "label": "degrees celcius",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "80",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1290,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "e097574761945311",
+        "type": "ui_gauge",
+        "z": "31ccc646d3cc98d9",
+        "name": "",
+        "group": "9a9b5a65e69800a8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "humidity gauge",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1280,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "eb0288a756bd0545",
+        "type": "ui_gauge",
+        "z": "31ccc646d3cc98d9",
+        "name": "",
+        "group": "9a9b5a65e69800a8",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "light Intensity gauge",
+        "label": "",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "4095",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1280,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "a85602d89ae48147",
+        "type": "function",
+        "z": "31ccc646d3cc98d9",
+        "name": "sensors data simulator function",
+        "func": "//generate random values for temperature,humidity\n//and light intensity.\n\n\n// Define a function to generate random values within a specific range\nfunction getRandomValue(min, max) {\n  return Math.floor(Math.random() * (max - min + 1)) + min;\n}\n\n// Generate dummy sensor data\nconst dummyData = {\n  temperature: getRandomValue(20, 40).toString(),\n  humidity: getRandomValue(30, 80).toString(),\n  lightIntensity: getRandomValue(200, 800).toString()\n};\n\n// Set the dummy data as the payload\nmsg.payload = dummyData;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 270,
+        "y": 580,
+        "wires": [
+            [
+                "0f14294defcc142d"
+            ]
+        ]
+    },
+    {
+        "id": "0f14294defcc142d",
+        "type": "debug",
+        "z": "31ccc646d3cc98d9",
+        "name": "debug 5",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 500,
+        "y": 580,
+        "wires": []
+    }
+]

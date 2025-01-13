@@ -1,0 +1,35 @@
+version: '3'
+services:
+  node-red:
+    container_name: node-red-container
+    image: nodered/node-red
+    ports:
+      - "1880:1880"
+    volumes:
+      - ./node_red_data:/data
+      - ./settings.js:/data/settings.js
+    restart: unless-stopped
+    user: "root"
+
+  mosquitto:
+    container_name: mosquitto-container
+    image: eclipse-mosquitto
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./mosquitto_data:/mosquitto/data
+      - ./mosquitto_log:/mosquitto/log
+      - ./mosquitto_conf:/mosquitto/config
+      #- ./entrypoint.sh:/usr/local/bin/entrypoint.sh  # Mount the entrypoint script
+      #- ./entrypoint.sh:/tmp/entrypoint.sh  # Mount the entrypoint script
+    restart: unless-stopped
+    #user: "root"
+    user: "mosquitto"
+    #entrypoint: /usr/local/bin/entrypoint.sh
+    #entrypoint: /bin/sh -c "chmod +x /usr/local/bin/entrypoint.sh && /usr/local/bin/entrypoint.sh && mosquitto -c /mosquitto/config/mosquitto.conf"
+    #entrypoint: /bin/sh -c "chmod +x /tmp/entrypoint.sh && /tmp/entrypoint.sh"
+    #entrypoint: ["/bin/sh", "-c", "chmod +x /usr/local/bin/entrypoint.sh && /usr/local/bin/entrypoint.sh && mosquitto -c /mosquitto/config/mosquitto.conf"]
+    #entrypoint: ["/bin/sh", "-c", "chmod +x /tmp/entrypoint.sh && mosquitto -c /mosquitto/config/mosquitto.conf"]
+    
+    #entrypoint: /bin/sh -c "if [ ! -f /mosquitto/config/passwordfile ]; then echo 'Creating password file...'; touch /mosquitto/config/passwordfile; chmod 0700 /mosquitto/config/passwordfile; chown mosquitto /mosquitto/config/passwordfile; mosquitto_passwd -b /mosquitto/config/passwordfile usernametest1 passwordtest1@7474; fi && mosquitto -c /mosquitto/config/mosquitto.conf"
+    entrypoint: /bin/sh -c "if [ ! -f /mosquitto/config/passwordfile ]; then echo 'Creating password file...'; touch /mosquitto/config/passwordfile;  chmod 0700 /mosquitto/config/passwordfile; chown mosquitto:mosquitto /mosquitto/config/passwordfile; mosquitto_passwd -b /mosquitto/config/passwordfile usernametest1 passwordtest1@7474; mosquitto_passwd -b /mosquitto/config/passwordfile usernametest2 passwordtest2@7575; fi && mosquitto -c /mosquitto/config/mosquitto.conf"
