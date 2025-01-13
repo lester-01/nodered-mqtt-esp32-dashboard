@@ -1,6 +1,11 @@
 # nodered-mqtt-esp32-dashboard
 A project on IOT, showcasing how node-red can be used to build a dashboard for display and control of iot devices like the esp32. mqtt is used as it is the go-to solution for most iot projects.
 
+NOTE: The documentation is still a work in progress, but so far we have the project code running.
+to run the project, use the docker-compose file i.e. run command 'sudo docker-compose up -d' in the root directory after cloning this project. that should get you running in no time
+there are some hard-coded passwords and ip addresses, which you will need o change appropriately. You're welcome to use my server while it is up and running for demos, though it wont be for long.
+I will get the documentation sorted soon as i can, and make the hard-coded passwords easy to change
+
 HARDWARE REQUIREMENTS:
 we will be using a linux host, but this could easily be improved to support windows host if needed, as we will be using docker containers. see software requirements below.
 
